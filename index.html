@@ -1,0 +1,688 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="The Barber House. Cortes modernos, degradados y estilo urbano. Agenda tu próxima cita.">
+  <title>The Barber House | Barbería urbana</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --fondo: #111111;
+      --tarjeta: #1c1c1c;
+      --dorado: #d8b477;
+      --blanco: #f5f2ed;
+      --gris: #aaa49b;
+      --borde: #303030;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--fondo);
+      color: var(--blanco);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .contenedor {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      background: rgba(17,17,17,.96);
+      border-bottom: 1px solid var(--borde);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .navegacion {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .marca {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tijeras {
+      color: var(--dorado);
+      font-size: 34px;
+    }
+
+    .nombre {
+      font: 900 24px/.9 'Barlow Condensed', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .nombre span {
+      display: block;
+      color: var(--dorado);
+      font-size: 14px;
+      letter-spacing: 5px;
+      margin-top: 6px;
+    }
+
+    .menu-link {
+      border: 1px solid var(--dorado);
+      padding: 9px 12px;
+      border-radius: 4px;
+      color: var(--dorado);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .hero {
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, #111 0%, rgba(17,17,17,.94) 30%,
+        rgba(17,17,17,.55) 65%, rgba(17,17,17,.25) 100%),
+        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1800&q=85')
+        center/cover;
+    }
+
+    .hero-contenido {
+      padding: 70px 0;
+      max-width: 650px;
+    }
+
+    .etiqueta {
+      color: var(--dorado);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    h1 {
+      font-size: clamp(62px, 12vw, 105px);
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    h1 span {
+      color: var(--dorado);
+      display: block;
+    }
+
+    .hero p {
+      color: #d0cbc4;
+      max-width: 440px;
+      font-size: 14px;
+      margin: 25px 0 28px;
+    }
+
+    .botones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .boton {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 49px;
+      padding: 13px 17px;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .4px;
+      transition: transform .2s, filter .2s;
+      cursor: pointer;
+    }
+
+    .boton:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.12);
+    }
+
+    .boton-dorado {
+      background: var(--dorado);
+      color: #17130c;
+    }
+
+    .boton-borde {
+      border: 1px solid #777;
+      color: white;
+      background: rgba(20,20,20,.5);
+    }
+
+    .boton-whatsapp {
+      background: #20b85a;
+      color: white;
+    }
+
+    .boton-llamar {
+      background: #292929;
+      border: 1px solid #555;
+      color: white;
+    }
+
+    .boton-maps {
+      background: #344354;
+      color: white;
+    }
+
+    section {
+      padding: 75px 0;
+    }
+
+    .encabezado {
+      margin-bottom: 32px;
+    }
+
+    .encabezado h2 {
+      font-size: clamp(40px, 8vw, 60px);
+      margin-bottom: 12px;
+    }
+
+    .encabezado h2 span {
+      color: var(--dorado);
+    }
+
+    .encabezado p {
+      color: var(--gris);
+      font-size: 14px;
+    }
+
+    .servicios {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .servicio {
+      padding: 26px 21px;
+      border: 1px solid var(--borde);
+      background: var(--tarjeta);
+      border-radius: 5px;
+      transition: border-color .2s;
+    }
+
+    .servicio:hover {
+      border-color: var(--dorado);
+    }
+
+    .numero {
+      color: var(--dorado);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .servicio h3 {
+      font-size: 28px;
+      margin: 17px 0 10px;
+    }
+
+    .servicio p {
+      font-size: 13px;
+      color: var(--gris);
+      min-height: 42px;
+    }
+
+    .precio {
+      color: var(--dorado);
+      font: 800 34px 'Barlow Condensed', sans-serif;
+      margin-top: 18px;
+    }
+
+    .nota {
+      color: #858078;
+      font-size: 11px;
+      margin-top: 14px;
+    }
+
+    .fondo-alterno {
+      background: #181818;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .galeria img {
+      display: block;
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 5px;
+      filter: saturate(.8);
+      transition: filter .2s, transform .2s;
+    }
+
+    .galeria img:hover {
+      filter: saturate(1);
+      transform: translateY(-3px);
+    }
+
+    .reserva {
+      text-align: center;
+      background:
+        linear-gradient(rgba(17,17,17,.9), rgba(17,17,17,.94)),
+        url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1500&q=85')
+        center/cover;
+      border-top: 1px solid var(--borde);
+      border-bottom: 1px solid var(--borde);
+    }
+
+    .reserva h2 {
+      font-size: clamp(40px, 8vw, 67px);
+      margin-bottom: 16px;
+    }
+
+    .reserva h2 span {
+      color: var(--dorado);
+    }
+
+    .reserva p {
+      max-width: 520px;
+      color: #c6c0b7;
+      margin: 0 auto 27px;
+      font-size: 14px;
+    }
+
+    .reserva .botones {
+      justify-content: center;
+    }
+
+    .informacion {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .info-card {
+      padding: 24px 20px;
+      border: 1px solid var(--borde);
+      background: var(--tarjeta);
+      border-radius: 5px;
+    }
+
+    .info-icono {
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .info-card h3 {
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .info-card p {
+      color: var(--gris);
+      font-size: 13px;
+      margin-bottom: 17px;
+      overflow-wrap: anywhere;
+    }
+
+    .info-card .boton {
+      width: 100%;
+    }
+
+    footer {
+      border-top: 1px solid var(--borde);
+      padding: 30px 0;
+      text-align: center;
+      color: var(--gris);
+      font-size: 11px;
+    }
+
+    footer strong {
+      color: var(--dorado);
+    }
+
+    .whatsapp-flotante {
+      position: fixed;
+      z-index: 90;
+      right: 15px;
+      bottom: 17px;
+      background: #20b85a;
+      color: white;
+      border-radius: 30px;
+      padding: 13px 17px;
+      box-shadow: 0 5px 25px #0008;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        min-height: 610px;
+        background-position: 58% center;
+      }
+
+      .hero-contenido {
+        padding: 60px 0;
+      }
+
+      .servicios {
+        grid-template-columns: 1fr;
+      }
+
+      .servicio p {
+        min-height: 0;
+      }
+
+      .galeria {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .galeria img {
+        height: 180px;
+      }
+
+      .informacion {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+
+      .boton {
+        flex: 1 1 145px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="contenedor navegacion">
+      <a class="marca" href="#inicio">
+        <span class="tijeras">✂</span>
+        <span class="nombre">
+          THE BARBER
+          <span>HOUSE</span>
+        </span>
+      </a>
+
+      <a class="menu-link" href="#servicios">SERVICIOS ↘</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor">
+        <div class="hero-contenido">
+          <div class="etiqueta">BARBERÍA · ESTILO · ACTITUD</div>
+
+          <h1>
+            NO ES SOLO
+            <span>UN CORTE.</span>
+            ES ACTITUD.
+          </h1>
+
+          <p>
+            Tu estilo habla por ti. Cortes precisos, degradados
+            definidos y un ambiente donde cada detalle cuenta.
+            Encuentra tu próximo look.
+          </p>
+
+          <div class="botones">
+            <a class="boton boton-dorado" href="#contacto">
+              RESERVA TU CORTE ↗
+            </a>
+
+            <a class="boton boton-borde" href="#servicios">
+              VER SERVICIOS
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="contenedor">
+        <div class="encabezado">
+          <div class="etiqueta">CALIDAD EN CADA DETALLE</div>
+          <h2>NUESTROS <span>SERVICIOS.</span></h2>
+          <p>Elige tu estilo. Nosotros nos encargamos del resto.</p>
+        </div>
+
+        <div class="servicios">
+          <article class="servicio">
+            <div class="numero">01 / CLASSIC</div>
+            <h3>CORTE CLÁSICO</h3>
+            <p>Un estilo limpio, fresco y personalizado.</p>
+            <div class="precio">$150 MXN</div>
+          </article>
+
+          <article class="servicio">
+            <div class="numero">02 / FADE</div>
+            <h3>FADE & DEGRADADO</h3>
+            <p>Transiciones precisas y acabados definidos.</p>
+            <div class="precio">$180 MXN</div>
+          </article>
+
+          <article class="servicio">
+            <div class="numero">03 / COMBO</div>
+            <h3>CORTE + BARBA</h3>
+            <p>El combo completo para renovar tu imagen.</p>
+            <div class="precio">$230 MXN</div>
+          </article>
+        </div>
+
+        <p class="nota">
+          * Precios de ejemplo. Se pueden personalizar para cada negocio.
+        </p>
+      </div>
+    </section>
+
+    <section class="fondo-alterno" id="galeria">
+      <div class="contenedor">
+        <div class="encabezado">
+          <div class="etiqueta">EL ESTILO SE NOTA</div>
+          <h2>FRESH <span>LOOKS.</span></h2>
+          <p>Inspiración para tu próximo corte.</p>
+        </div>
+
+        <div class="galeria">
+          <img
+            src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80"
+            alt="Inspiración de barbería moderna"
+            loading="lazy">
+
+          <img
+            src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80"
+            alt="Interior de barbería"
+            loading="lazy">
+
+          <img
+            src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=700&q=80"
+            alt="Estilo masculino y barbería"
+            loading="lazy">
+        </div>
+
+        <p class="nota">
+          Fotografías ilustrativas de referencia.
+        </p>
+      </div>
+    </section>
+
+    <section class="reserva">
+      <div class="contenedor">
+        <div class="etiqueta">TU SIGUIENTE CORTE TE ESPERA</div>
+        <h2>¿LISTO PARA EL <span>CAMBIO?</span></h2>
+
+        <p>
+          Escríbenos para consultar horarios y reservar tu cita.
+          Tu próximo estilo está a un mensaje de distancia.
+        </p>
+
+        <div class="botones">
+          <a class="boton boton-whatsapp" data-whatsapp href="#">
+            WHATSAPP · AGENDAR CITA
+          </a>
+
+          <a class="boton boton-llamar" data-llamar href="#">
+            ☎ LLAMAR A LA TIENDA
+          </a>
+
+          <a class="boton boton-maps" data-maps href="#" target="_blank" rel="noopener">
+            📍 CÓMO LLEGAR
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="contenedor">
+        <div class="encabezado">
+          <div class="etiqueta">VEN A CONOCERNOS</div>
+          <h2>ENCUÉNTRANOS <span>AQUÍ.</span></h2>
+          <p>Tu próximo corte comienza con una visita.</p>
+        </div>
+
+        <div class="informacion">
+          <article class="info-card">
+            <div class="info-icono">◷</div>
+            <h3>HORARIOS</h3>
+            <p>
+              Lunes a sábado<br>
+              10:00 AM – 8:00 PM<br>
+              Domingo: 11:00 AM – 4:00 PM
+            </p>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icono">☎</div>
+            <h3>LLÁMANOS</h3>
+            <p data-telefono-visible>Teléfono de demostración</p>
+            <a class="boton boton-llamar" data-llamar href="#">
+              LLAMAR AHORA
+            </a>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icono">⌖</div>
+            <h3>UBICACIÓN</h3>
+            <p data-direccion-visible>Ubicación de demostración</p>
+            <a class="boton boton-maps" data-maps href="#" target="_blank" rel="noopener">
+              ABRIR GOOGLE MAPS
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor">
+      <strong>THE BARBER HOUSE</strong><br>
+      TU ESTILO. TU SELLO. TU ACTITUD.<br><br>
+      <span>Concepto ficticio para portafolio web.</span>
+    </div>
+  </footer>
+
+  <a class="whatsapp-flotante" data-whatsapp href="#">
+    ◉ AGENDAR CITA
+  </a>
+
+  <script>
+    // ==========================================
+    // PERSONALIZA AQUÍ LOS DATOS DEL NEGOCIO
+    // ==========================================
+
+    const NEGOCIO = {
+      whatsapp: "528341234567",
+      telefono: "+528341234567",
+      direccion: "Tampico, Tamaulipas, México",
+      mensaje: "¡Hola! Quiero agendar una cita en The Barber House. ¿Qué horarios tienen disponibles?"
+    };
+
+    // WhatsApp: abre el chat con un mensaje preparado.
+    const enlaceWhatsApp =
+      "https://wa.me/" +
+      NEGOCIO.whatsapp.replace(/\D/g, "") +
+      "?text=" +
+      encodeURIComponent(NEGOCIO.mensaje);
+
+    document.querySelectorAll("[data-whatsapp]").forEach(function(boton) {
+      boton.href = enlaceWhatsApp;
+      boton.target = "_blank";
+      boton.rel = "noopener";
+    });
+
+    // Llamada: abre el marcador del teléfono.
+    const enlaceLlamada =
+      "tel:" + NEGOCIO.telefono.replace(/[^\d+]/g, "");
+
+    document.querySelectorAll("[data-llamar]").forEach(function(boton) {
+      boton.href = enlaceLlamada;
+    });
+
+    // Google Maps: busca la dirección configurada.
+    const enlaceMaps =
+      "https://www.google.com/maps/search/?api=1&query=" +
+      encodeURIComponent(NEGOCIO.direccion);
+
+    document.querySelectorAll("[data-maps]").forEach(function(boton) {
+      boton.href = enlaceMaps;
+    });
+
+    // Muestra los datos de contacto en la página.
+    document.querySelectorAll("[data-telefono-visible]").forEach(function(elemento) {
+      elemento.textContent = NEGOCIO.telefono;
+    });
+
+    document.querySelectorAll("[data-direccion-visible]").forEach(function(elemento) {
+      elemento.textContent = NEGOCIO.direccion;
+    });
+  </script>
+
+</body>
+</html>
